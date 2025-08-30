@@ -163,7 +163,7 @@ function ProductDetailsSection({ productDetails, loading, error, adjustedDims, o
         </Grid>
       </Grid>
 
-      <TextField fullWidth label="Số lượng" type="number" value={quantity} onChange={onQuantityChange} InputProps={{ inputProps: { min: 1 } }} size="small" sx={{ mb: 1 }} />
+      <TextField fullWidth label="Số mét " type="number" value={quantity} onChange={onQuantityChange} InputProps={{ inputProps: { min: 1 } }} size="small" sx={{ mb: 1 }} />
 
       <Typography variant="subtitle2" fontWeight="bold">Giá thực tế / sản phẩm:</Typography>
       <Typography variant="body1" color="secondary" gutterBottom>{formatCurrency(finalPrice)}</Typography>

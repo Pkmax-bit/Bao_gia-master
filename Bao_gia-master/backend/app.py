@@ -138,6 +138,13 @@ def submit_quote():
             part_name = get_name('part_types', data.get('part_id'))
 
             time_sent = datetime.now().strftime('%d/%m/%Y %H:%M:%S')
+
+            def format_currency(value):
+                try:
+                    return "{:,.0f}".format(float(value)).replace(",", ".") + " ₫"
+                except Exception:
+                    return str(value)
+
             body_html = f"""
                 <h2>📢 <b>Yêu cầu báo giá mới</b></h2>
                 <p><b>Thời gian gửi:</b> {time_sent}</p>
@@ -151,7 +158,7 @@ def submit_quote():
                     <li><b>Bộ phận:</b> {part_name}</li>
                     <li><b>Kích thước:</b> {quote_data['actual_width']} x {quote_data['actual_height']} x {quote_data['actual_depth']}</li>
                     <li><b>Số lượng:</b> {quote_data['quantity']}</li>
-                    <li><b>Thành tiền:</b> {quote_data['total_price']}</li>
+                    <li><b>Thành tiền:</b> {format_currency(quote_data['total_price'])}</li>
                 </ul>
                 <p><b>📩 Trạng thái:</b> Đang chờ xử lý ✅</p>
             """
